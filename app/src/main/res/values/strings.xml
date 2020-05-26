@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">nickyApp</string>
+    <string name="action_settings">Click me to do something</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Click to go to page 2</string>
+    <string name="previous">Click to go to page 1</string>
+
+    <string name="hello_first_fragment">Main Page</string>
+    <string name="hello_second_fragment">Second Page</string>
+</resources>
