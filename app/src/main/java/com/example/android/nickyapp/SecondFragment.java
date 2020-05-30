@@ -50,7 +50,7 @@ public class SecondFragment extends Fragment {
                 .setAction("click")
                 .setLabel(getString(R.string.frag1))
                 .build());
-            Log.d(TAG, "*** Clicked: " + getString(R.string.frag1));
+            Log.d(TAG, "*** Event: " + getString(R.string.frag1));
             /* END Analytics */
 
             NavHostFragment.findNavController(SecondFragment.this)
