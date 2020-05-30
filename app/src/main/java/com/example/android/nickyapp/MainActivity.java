@@ -1,45 +1,39 @@
 package com.example.android.nickyapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button button;
     private static final String TAG = "MainActivity";
-    private ViewPager mViewPager;
     private Tracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Whoa, you just clicked the icon!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        /* Analytics */
         AnalyticsApp application = (AnalyticsApp) getApplication();
         tracker = application.getDefaultTracker();
-        Log.d(TAG, "***** tracker = " + tracker);
+
+        tracker.setScreenName("screen - page 1");
+        tracker.send(new HitBuilders.ScreenViewBuilder()
+                .setCustomDimension(1, getString(R.string.app_name))
+                .build());
+        Log.d(TAG, "*** Setting CD1 value to: " + getString(R.string.app_name));
+        /* END Analytics */
+
+        onButtonClick();
     }
 
     @Override
@@ -58,15 +52,30 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            /*
-            tracker.send(new HitBuilders.EventBuilder()
-                    .setCategory("action")
-                    .setAction("click")
-                    .build());
 
-             */
+            /* Analytics */
+            tracker.send(new HitBuilders.EventBuilder()
+                    .setCustomMetric(1,1)
+                    .setCategory("menu")
+                    .setAction("click")
+                    .setLabel(getString(R.string.action_settings))
+                    .build());
+            Log.d(TAG, "*** Event");
+            /* END Analytics */
+
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onButtonClick(){
+        button = findViewById(R.id.button_page2);
+        button.setOnClickListener(new View.OnClickListener(){
+        @Override
+            public void onClick(View arg0){
+                Intent myIntent = new Intent(getBaseContext(), Main2Activity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 }

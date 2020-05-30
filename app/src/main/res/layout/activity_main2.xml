@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main2Activity">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go To Page 2"
-        android:id="@+id/button_page2"
+        android:text="Go To Page 1"
+        android:id="@+id/button_page1"
         android:layout_gravity="center|bottom"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is page 1"
+        android:text="This is page 2"
         android:textSize="40dp"
         android:layout_gravity="center"/>
     <include layout="@layout/content_main" />
