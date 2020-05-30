@@ -7,6 +7,8 @@
     <string name="frag2">Go to Fragment 2</string>
     <string name="frag1">Go to Fragment 1</string>
 
+    <string name="screen1Text">Go to Page 2</string>
+    <string name="screen2Text">Go to Page 1</string>
     <string name="hello_first_fragment">This is Fragment 1</string>
     <string name="hello_second_fragment">This is Fragment 2</string>
     <string name="title_activity_main2">Main2Activity</string>
